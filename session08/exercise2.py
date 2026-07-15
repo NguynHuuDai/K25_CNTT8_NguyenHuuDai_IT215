@@ -210,3 +210,4 @@ def create_allocation(request: AllocationRequest):
 @app.get("/allocations")
 def get_allocations():
     return allocations
+    
