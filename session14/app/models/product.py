@@ -1,22 +1,10 @@
-from fastapi import APIRouter, Depends
-from sqlalchemy.orm import Session
-from app.database.database import get_db
-from app.models.product import Product
-
-"""
-VIẾT API lấy dữ liệu
-"""
-
-router_product = APIRouter(
-    prefix="/products",
-    tags=["Product"]
-)
+from sqlalchemy import Column, Integer, String, Float
+from app.database import Base
 
 
-@router_product.get("")
-def get_all_product(db: Session = Depends(get_db)):
-    products = db.query(Product).all()
-    return {
-        "message": "Lấy danh sách sản phẩm",
-        "data": products
-    }
+class Product(Base):
+    __tablename__ = "products"
+
+    id = Column(Integer, primary_key=True, index=True, autoincrement=True)
+    name = Column(String(255), nullable=False)
+    price = Column(Float, nullable=False)
