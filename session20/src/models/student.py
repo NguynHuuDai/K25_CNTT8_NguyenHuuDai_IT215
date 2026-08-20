@@ -1,7 +1,7 @@
 from sqlalchemy import Column, Integer, String, ForeignKey
 from sqlalchemy.orm import relationship
 
-from database.base import Base
+from session20.src.database.base import Base
 
 
 class Student(Base):
